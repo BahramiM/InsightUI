@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createPostSchema, CreatePostFormValues } from "@/schemas/postSchema";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import ImageUpload from "../imageUpload";
 
 export const CreatePostForm = () => {
   const [message, setMessage] = useState<string | null>(null);
@@ -14,6 +15,7 @@ export const CreatePostForm = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    setValue,
   } = useForm<CreatePostFormValues>({
     resolver: zodResolver(createPostSchema),
   });
@@ -54,6 +56,19 @@ export const CreatePostForm = () => {
       </div>
 
       <div>
+        <label className="block mb-1 font-medium">Description</label>
+        <textarea
+          rows={6}
+          {...register("description")}
+          className="w-full border rounded px-3 py-2"
+        />
+        {errors.description && (
+          <p className="text-red-500 text-sm mt-1">
+            {errors.description.message}
+          </p>
+        )}
+      </div>
+      <div>
         <label className="block mb-1 font-medium">Content</label>
         <textarea
           rows={6}
@@ -63,6 +78,13 @@ export const CreatePostForm = () => {
         {errors.content && (
           <p className="text-red-500 text-sm mt-1">{errors.content.message}</p>
         )}
+      </div>
+      <div>
+        <ImageUpload
+          onUpload={(url) =>
+            setValue("image_url", url, { shouldValidate: true })
+          }
+        />
       </div>
 
       {message && <p className="text-sm text-center">{message}</p>}
