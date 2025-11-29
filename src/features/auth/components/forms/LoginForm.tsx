@@ -4,7 +4,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormValues } from "@/schemas/authSchema";
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabase/client";
+import { redirect } from "next/navigation";
+import { Button } from "@/components/ui/Button";
 
 export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -17,18 +19,25 @@ export const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = async (data: LoginFormValues) => {
+  const onSubmit = async (values: LoginFormValues) => {
     setErrorMessage(null);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
+    const { error, data } = await supabase.auth.signInWithPassword({
+      email: values.email,
+      password: values.password,
     });
 
     if (error) {
       setErrorMessage("Login failed. Please check your credentials.");
     } else {
-      console.log("Login successful");
+      switch (data.user.role) {
+        case "admin":
+          redirect("/admin");
+        case "user":
+          redirect("/profile");
+        default:
+          redirect("/");
+      }
     }
   };
 
@@ -63,13 +72,13 @@ export const LoginForm = () => {
 
       {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
 
-      <button
+      <Button
         type="submit"
         disabled={isSubmitting}
         className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
       >
         Sign In
-      </button>
+      </Button>
     </form>
   );
 };

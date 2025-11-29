@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema, SignupFormValues } from "@/schemas/authSchema";
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabase/client";
+import { Button } from "@/components/ui/Button";
 
 export const SignupForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -122,13 +123,13 @@ export const SignupForm = () => {
         <p className="text-green-600 text-sm">{successMessage}</p>
       )}
 
-      <button
+      <Button
         type="submit"
         disabled={isSubmitting}
         className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
       >
         Sign Up
-      </button>
+      </Button>
     </form>
   );
 };

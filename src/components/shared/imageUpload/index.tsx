@@ -5,10 +5,14 @@ import { uploadImageToSupabase } from "@/lib/uploadImage";
 
 type ImageUploadProps = {
   onUpload: (url: string) => void;
+  initialUrl?: string | null;
 };
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
-  const [preview, setPreview] = useState<string | null>(null);
+const ImageUpload: React.FC<ImageUploadProps> = ({
+  onUpload,
+  initialUrl = null,
+}) => {
+  const [preview, setPreview] = useState<string | null>(initialUrl || null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -65,7 +69,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload }) => {
       ) : (
         <p className="text-gray-500">Click or drag an image to upload</p>
       )}
-
       <input
         type="file"
         accept="image/*"
