@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema, SignupFormValues } from "@/schemas/authSchema";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase/client";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/lbutton";
 
 export const SignupForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);

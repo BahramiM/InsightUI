@@ -1,6 +1,5 @@
-import AdminSideBar from "@/components/shared/AdminSideBar";
-import Logo from "@/components/shared/Logo";
-import Link from "next/link";
+import AdminSideBar from "@/components/shared/AdminSideBar/AdminSideBar";
+import Logo from "@/components/shared/Logo/Logo";
 
 export default function AdminLayout({
   children,

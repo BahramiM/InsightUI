@@ -5,8 +5,8 @@ import { supabase } from "@/lib/supabase/client";
 import { useState } from "react";
 import { AuthorStatus, AuthorStatusMessages } from "@/types/user";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/Button";
-import { UserPosts } from "@/features/posts/components/lists/UserPostsList";
+import { Button } from "@/components/ui/lbutton";
+import { UserPosts } from "@/features/posts/components/lists/PostsListUser";
 
 export default function ProfilePage() {
   const user = useAuthStore((s) => s.user);
@@ -70,7 +70,7 @@ export default function ProfilePage() {
           ) : null}
           {+user.author_status === AuthorStatus.APPROVED &&
           user.permissions.can_create_post ? (
-            <Button onClick={() => router.push("/new-post")}>
+            <Button onClick={() => router.push("/post/new")}>
               Write a new post
             </Button>
           ) : null}

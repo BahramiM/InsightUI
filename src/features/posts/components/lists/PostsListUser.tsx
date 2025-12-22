@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase/client";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { useRouter } from "next/navigation";
-import { Post } from "@/types/post";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
+import { Post } from "@/features/posts/types/postTypes";
 
 export const UserPosts = () => {
   const user = useAuthStore((s) => s.user);

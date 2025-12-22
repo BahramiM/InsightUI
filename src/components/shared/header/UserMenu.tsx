@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/useAuthStore";
 
-export const UserMenu = () => {
+const UserMenu = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const user = useAuthStore((state) => state.user);
@@ -71,3 +71,4 @@ export const UserMenu = () => {
     </div>
   );
 };
+export default UserMenu;

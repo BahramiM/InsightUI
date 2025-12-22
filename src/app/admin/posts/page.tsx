@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/lbutton";
 import { supabase } from "@/lib/supabase/client";
-import { Post } from "@/types/post";
+import { Post } from "@/features/posts/types/postTypes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
