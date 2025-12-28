@@ -14,7 +14,7 @@ export function ReactQueryProvider({
   state,
 }: {
   children: React.ReactNode;
-  state: DehydratedState;
+  state?: DehydratedState;
 }) {
   const [queryClient] = useState(
     () =>

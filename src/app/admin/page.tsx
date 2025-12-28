@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/lbutton";
+import { Button } from "@/components/ui";
 import { useRouter } from "next/navigation";
 
 export default function Dashboard() {

@@ -1,6 +1,7 @@
 "use client";
 
 import TitleBar from "@/components/shared/TitleBar/TitleBar";
+import CommentForm from "@/features/comments/components/forms/CommetForm";
 import { usePostWithAuthorById } from "@/features/posts/hooks/usePostWithAuthorById";
 import Image from "next/image";
 
@@ -9,14 +10,12 @@ interface PostDetailProps {
   initialData?: unknown;
 }
 
-export default function PostDetail({
-  postId,
-  initialData,
-}: PostDetailProps) {
-  const { data: post, isLoading, error } = usePostWithAuthorById(
-    postId,
-    initialData
-  );
+export default function PostDetail({ postId, initialData }: PostDetailProps) {
+  const {
+    data: post,
+    isLoading,
+    error,
+  } = usePostWithAuthorById(postId, initialData);
 
   if (isLoading) {
     return <p className="text-center mt-10">Loading...</p>;
@@ -52,7 +51,8 @@ export default function PostDetail({
       )}
 
       <div>{post.content}</div>
+      <h3 className="text-2xl font-extrabold">Leave Us A Comment</h3>
+      <CommentForm postId={post.id} />
     </article>
   );
 }
-

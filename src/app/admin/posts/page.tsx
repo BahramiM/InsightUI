@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/lbutton";
+import { Button } from "@/components/ui";
 import { supabase } from "@/lib/supabase/client";
 import { Post } from "@/features/posts/types/postTypes";
 import { useRouter } from "next/navigation";

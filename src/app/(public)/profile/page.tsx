@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabase/client";
 import { useState } from "react";
 import { AuthorStatus, AuthorStatusMessages } from "@/types/user";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/lbutton";
+import { Button } from "@/components/ui";
 import { UserPosts } from "@/features/posts/components/lists/PostsListUser";
 
 export default function ProfilePage() {

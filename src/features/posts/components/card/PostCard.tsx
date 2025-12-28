@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const PostCard = ({ post }: { post: Post }) => {
   return (
-    <div className="flex not-last:border-b not-last:border-gray-900 pb-4 not-last:mb-4">
+    <div className="flex not-last:border-b not-last:border-gray-900 pb-4 not-last:mb-4 w-full justify-between">
       <div>
         <Link href={`/post/${post.id}`}>
           <h2 className="text-2xl mb-2">{post.title}</h2>
@@ -20,7 +20,7 @@ export const PostCard = ({ post }: { post: Post }) => {
         </div>
       </div>
       {post.image_url ? (
-        <div className="overflow-hidden ml-4">
+        <div className="overflow-hidden ml-4 min-w-[250px] min-h-[150px]">
           <Image
             src={post.image_url}
             alt={post.title}

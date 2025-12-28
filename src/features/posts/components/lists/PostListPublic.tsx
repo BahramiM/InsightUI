@@ -2,14 +2,9 @@
 
 import { PostCard } from "@/features/posts/components/card/PostCard";
 import { usePostsList } from "@/features/posts/hooks/usePostsList";
-import { Post } from "@/features/posts/types/postTypes";
 
-interface PublicPostListProps {
-  initialData?: Post[] | null;
-}
-
-export default function PublicPostList({ initialData }: PublicPostListProps) {
-  const { data: posts, isLoading, error } = usePostsList(initialData);
+export default function PublicPostList() {
+  const { data: posts, isLoading, error } = usePostsList();
 
   if (isLoading) {
     return <p className="text-center mt-10">Loading posts...</p>;

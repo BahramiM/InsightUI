@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase/client";
-import { Button } from "@/components/ui/lbutton";
+import { Button } from "@/components/ui";
 
 type AuthorRequest = {
   user_id: string;

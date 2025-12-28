@@ -6,7 +6,7 @@ import { loginSchema, LoginFormValues } from "@/schemas/authSchema";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
-import { Button } from "@/components/ui/lbutton";
+import { Button } from "@/components/ui";
 
 export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
